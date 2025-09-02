@@ -1,5 +1,6 @@
-import GlobalStyles from "./components/GlobalStyles";
+import GlobalStyles from "./components/GlobalStyle";
 import { Metadata } from "next";
+import { Header } from "./components/Header";
 
 export const metadata: Metadata = {
   title: "InsanyShop",
@@ -15,6 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <GlobalStyles />
       <body>
+        <Header />
         {children}
       </body>
     </html>
