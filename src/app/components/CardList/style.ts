@@ -7,34 +7,31 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
 export const BoxCard = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  /* border: solid 0px; */
-
-    /* width: 356px;
-    height: 520px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     top: 291px;
     left: 160px;
     justify-content: space-between;
     opacity: 1;
-    /* border-radius: 19px; */
     border-width: 1px;
 `;
 
 export const Image = styled.img`
-  width: 356px;
-  height: 270px;
-  border-radius: 19px 19px 0 0 ;
-  object-fit: cover;
-  object-position: center;
-  display: block;
-  position: relative;
-  overflow: hidden;
+    max-width: 373.33px;
+    width: 100%;
+    height: 270px;
+    border-radius: 19px 19px 0 0 ;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    position: relative;
+    overflow: hidden;
 `;
 
 export const Content = styled(Box)`
-    width: 356px;
+    max-width: 373.33px;
+    width: 100%;
     min-height: 266px;
     opacity: 1;
     gap: 15px;

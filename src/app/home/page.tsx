@@ -92,7 +92,7 @@ export default function Home() {
         <DropdownContainer>
           <DropdownButton onClick={() => setOpenCategores(prev => !prev)}>
             <Typography className="text">Selecione a categoria</Typography>
-            <img src="icons/arrow.svg" />
+            <img src="/icons/arrow.svg" />
           </DropdownButton>
 
           {openCategores && (
@@ -113,7 +113,7 @@ export default function Home() {
         <DropdownContainer>
           <DropdownButton onClick={() => setOpenOrder(prev => !prev)}>
             <Typography className="text">Ordenar por</Typography>
-            <img src="icons/arrow.svg" />
+            <img src="/icons/arrow.svg" />
           </DropdownButton>
 
           {openOrder && (
