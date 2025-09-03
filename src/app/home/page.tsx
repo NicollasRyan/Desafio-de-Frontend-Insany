@@ -1,9 +1,10 @@
 "use client";
 
-import { Box, Container, FormControl, Grid, InputLabel, MenuItem, Pagination, Select, Typography } from "@mui/material";
-import { CardCategores, GridCategores, OrganizeBox, PaginationStyled, Title, TitleCategores } from "./styles";
+import { Box, Container, Grid, Pagination, Typography } from "@mui/material";
+import { CardCategores, DropdownButton, DropdownContainer, DropdownItem, DropdownList, GridCategores, OrganizeBox, PaginationStyled, Title, TitleCategores } from "./styles";
 import { useEffect, useState } from "react";
 import { CardList } from "../components/CardList";
+import { useRouter } from "next/navigation";
 
 export interface Pagination {
   currentPage: number;
@@ -35,12 +36,18 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [loading, setLoading] = useState(true);
-  const [category, setCategory] = useState('');
+  const [openCategores, setOpenCategores] = useState(false);
+  const [openOrder, setOpenOrder] = useState(false);
+  const [sortOrder, setSortOrder] = useState<string>("");
   const [page, setPage] = useState(1);
+
+  const router = useRouter();
+
   const categores = [...new Set(products.map(p => p.category))];
 
-  const handleChange = (event: React.ChangeEvent<{ value: unknown }>) => {
-    setCategory(event.target.value as string);
+  const handleSelect = (category: string) => {
+    setOpenCategores(false);
+    router.push(`/category/${category}`);
   };
 
   const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
@@ -64,22 +71,75 @@ export default function Home() {
     fetchProducts();
   }, [page]);
 
-  console.log("=>", products);
-  console.log("2", pagination);
-  console.log("3", page);
+  const sortedProducts = [...products].sort((a, b) => {
+    switch (sortOrder) {
+      case "price-asc":
+        return a.price - b.price;
+      case "price-desc":
+        return b.price - a.price;
+      case "new":
+        return b.id - a.id;
+      case "bestseller":
+        return b.rating - a.rating;
+      default:
+        return 0;
+    }
+  });
 
   return (
     <Container>
       <OrganizeBox>
-        <Typography>Selecione a categoria</Typography>
-        <Typography>Organizar por</Typography>
+        <DropdownContainer>
+          <DropdownButton onClick={() => setOpenCategores(prev => !prev)}>
+            <Typography className="text">Selecione a categoria</Typography>
+            <img src="icons/arrow.svg" />
+          </DropdownButton>
+
+          {openCategores && (
+            <DropdownList>
+              {categores.map((category) => (
+                <DropdownItem key={category}
+                  onClick={() => handleSelect(category)}
+                >
+                  <Typography className="text">
+                    {category}
+                  </Typography>
+                </DropdownItem>
+              ))}
+            </DropdownList>
+          )}
+        </DropdownContainer>
+
+        <DropdownContainer>
+          <DropdownButton onClick={() => setOpenOrder(prev => !prev)}>
+            <Typography className="text">Ordenar por</Typography>
+            <img src="icons/arrow.svg" />
+          </DropdownButton>
+
+          {openOrder && (
+            <DropdownList>
+              <DropdownItem onClick={() => setSortOrder("new")}>
+                <Typography className="text">Novidade</Typography>
+              </DropdownItem>
+              <DropdownItem onClick={() => setSortOrder("price-desc")}>
+                <Typography className="text">Preço: Maior-menor</Typography>
+              </DropdownItem>
+              <DropdownItem onClick={() => setSortOrder("price-asc")}>
+                <Typography className="text">Preço: Menor-maior</Typography>
+              </DropdownItem>
+              <DropdownItem onClick={() => setSortOrder("bestseller")}>
+                <Typography className="text">Mais Vendidos</Typography>
+              </DropdownItem>
+            </DropdownList>
+          )}
+        </DropdownContainer>
       </OrganizeBox>
       <Title>Todos os produtos</Title>
       <Grid container spacing={2}>
         {loading ? (
           <Typography>Carregando produtos...</Typography>
         ) : (
-          products?.map((product, index) => (
+          sortedProducts?.map((product, index) => (
             <Grid size={4} key={index}>
               <CardList
                 name={product.name}

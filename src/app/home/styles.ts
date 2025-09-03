@@ -1,8 +1,66 @@
 import styled from "@emotion/styled";
-import { Box, Card, Grid, Pagination, Typography } from "@mui/material";
+import { Box, Grid, Pagination, Typography } from "@mui/material";
 import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700'] });
+
+
+export const DropdownContainer = styled(Box)`
+  position: relative;
+`;
+
+export const DropdownButton = styled(Box)`
+    line-height: 22px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    color: #737380;
+    cursor: pointer;
+
+    .text {
+        font-family: '${inter.style.fontFamily}', sans-serif;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 14px;
+        margin-right: 8px;
+    }
+`;
+
+export const DropdownList = styled(Box)`
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 176px;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 100;
+
+    .text {
+        font-family: '${inter.style.fontFamily}', sans-serif;
+        line-height: 22px;
+        letter-spacing: 0%;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+`;
+
+export const DropdownItem = styled(Box)`
+    padding: 12px 16px;
+    font-family: '${inter.style.fontFamily}', sans-serif;
+    font-size: 16px;
+    color: #5f6c72;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #f4f4f4;
+    }
+`;
 
 export const OrganizeBox = styled(Box)`
     display: flex;
