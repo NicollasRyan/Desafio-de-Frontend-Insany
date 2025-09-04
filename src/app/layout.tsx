@@ -1,6 +1,6 @@
-import GlobalStyles from "./components/GlobalStyle";
+import GlobalStyles from "../components/GlobalStyle";
 import { Metadata } from "next";
-import { Header } from "./components/Header";
+import { Header } from "../components/Header";
 
 export const metadata: Metadata = {
   title: "InsanyShop",

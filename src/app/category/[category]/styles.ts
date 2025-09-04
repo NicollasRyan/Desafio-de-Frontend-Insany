@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Pagination, Typography } from "@mui/material";
 import { Inter } from 'next/font/google';
-import Link from "next/link";
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
@@ -23,7 +22,7 @@ export const BoxNavigation = styled(Box)`
 `;
 
 export const Text = styled(Typography)`
-    font-family: '${inter.style.fontFamily}', sans-serif !important;
+    font-family: '${inter.style.fontFamily}', sans-serif;
     display: flex;
     align-items: center;
     font-weight: 400;

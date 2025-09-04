@@ -2,15 +2,15 @@
 
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Pagination, Product } from "../../home/page";
+import { TypePagination, TypeProduct } from "../../home/page";
 import { useParams, useRouter } from "next/navigation";
-import { CardList } from "../../components/CardList";
+import { CardList } from "../../../components/CardList";
 import { OrganizeBox, DropdownContainer, DropdownButton, DropdownList, DropdownItem, TextCategory, BoxNavigation, Text, Title, Summary, PaginationStyled } from "./styles";
 
 export default function Category() {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<TypeProduct[]>([]);
     const [loading, setLoading] = useState(true);
-    const [pagination, setPagination] = useState<Pagination | null>(null);
+    const [pagination, setPagination] = useState<TypePagination | null>(null);
     const [sortOrder, setSortOrder] = useState<string>("");
     const [openOrder, setOpenOrder] = useState(false);
     const [page, setPage] = useState(1);
@@ -113,7 +113,7 @@ export default function Category() {
                     <Grid size={4} key={index}>
                         <CardList
                             name={p.name}
-                            brand={p.brand}
+                            id={p.id}
                             category={p.category}
                             description={p.description}
                             image={p.image}

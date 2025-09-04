@@ -1,9 +1,10 @@
 import { Box } from "@mui/material";
 import { BoxCard, BoxSpaceBetween, ButtonAdd, Content, Image, Price, Text, TitleCard } from "./style";
+import { useRouter } from "next/navigation";
 
 interface CardListProps {
     name: string;
-    brand: string;
+    id: number;
     category: string;
     description: string;
     image: string;
@@ -14,7 +15,7 @@ interface CardListProps {
 
 export const CardList: React.FC<CardListProps> = ({
     name,
-    brand,
+    id,
     category,
     description,
     image,
@@ -22,6 +23,7 @@ export const CardList: React.FC<CardListProps> = ({
     rating,
     stock,
 }) => {
+    const router = useRouter();
 
     function limtText(text: string, limit: number = 58): string {
         if (text.length <= limit) {
@@ -40,8 +42,10 @@ export const CardList: React.FC<CardListProps> = ({
         return cut + "...";
     }
 
+    console.log(image);
+
     return (
-        <BoxCard>
+        <BoxCard onClick={() => router.push(`/product/${id}`)}>
             <Image src={image} alt={name} />
             <Content>
                 <BoxSpaceBetween>

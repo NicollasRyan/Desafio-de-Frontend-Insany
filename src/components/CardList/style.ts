@@ -15,6 +15,7 @@ export const BoxCard = styled(Box)`
     justify-content: space-between;
     opacity: 1;
     border-width: 1px;
+    cursor: pointer;
 `;
 
 export const Image = styled.img`
