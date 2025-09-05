@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Container, Grid, Pagination, Typography } from "@mui/material";
-import { CardCategores, DropdownButton, DropdownContainer, DropdownItem, DropdownList, GridCategores, OrganizeBox, PaginationStyled, Title, TitleCategores } from "./styles";
+import { CardCategores, DropdownButton, DropdownContainer, DropdownItem, DropdownItemOrder, DropdownList, GridCategores, OrganizeBox, PaginationStyled, Title, TitleCategores } from "./styles";
 import { useEffect, useState } from "react";
 import { CardList } from "../../components/CardList";
 import { useRouter } from "next/navigation";
@@ -118,18 +118,18 @@ export default function Home() {
 
           {openOrder && (
             <DropdownList>
-              <DropdownItem onClick={() => setSortOrder("new")}>
+              <DropdownItemOrder onClick={() => setSortOrder("new")}>
                 <Typography className="text">Novidade</Typography>
-              </DropdownItem>
-              <DropdownItem onClick={() => setSortOrder("price-desc")}>
+              </DropdownItemOrder>
+              <DropdownItemOrder onClick={() => setSortOrder("price-desc")}>
                 <Typography className="text">Preço: Maior-menor</Typography>
-              </DropdownItem>
-              <DropdownItem onClick={() => setSortOrder("price-asc")}>
+              </DropdownItemOrder>
+              <DropdownItemOrder onClick={() => setSortOrder("price-asc")}>
                 <Typography className="text">Preço: Menor-maior</Typography>
-              </DropdownItem>
-              <DropdownItem onClick={() => setSortOrder("bestseller")}>
+              </DropdownItemOrder>
+              <DropdownItemOrder onClick={() => setSortOrder("bestseller")}>
                 <Typography className="text">Mais Vendidos</Typography>
-              </DropdownItem>
+              </DropdownItemOrder>
             </DropdownList>
           )}
         </DropdownContainer>

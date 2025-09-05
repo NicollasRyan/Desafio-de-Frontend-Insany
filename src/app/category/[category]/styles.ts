@@ -41,6 +41,10 @@ export const Title = styled(Typography)`
     line-height: 150%;
     letter-spacing: 0%;
     vertical-align: middle;
+
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
 `;
 
 export const  BoxSpaceBetween = styled(Box)`
@@ -48,6 +52,11 @@ export const  BoxSpaceBetween = styled(Box)`
     justify-content: space-between;
     align-items: center;
     margin: 50px 0;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 `;
 
 export const Summary = styled(Typography)`
@@ -57,6 +66,10 @@ export const Summary = styled(Typography)`
     line-height: 150%;
     letter-spacing: 0%;
     vertical-align: middle;
+
+     @media (max-width: 768px) {
+        font-size: 16px;
+    }
 `;
 
 export const DropdownContainer = styled(Box)`
@@ -84,7 +97,7 @@ export const DropdownButton = styled(Box)`
 export const DropdownList = styled(Box)`
     position: absolute;
     top: calc(100% + 4px);
-    left: 0;
+    left: -55px;
     width: 176px;
     background-color: #fff;
     border-radius: 4px;

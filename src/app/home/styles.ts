@@ -69,17 +69,28 @@ export const DropdownItem = styled(Box)`
     }
 `;
 
+export const DropdownItemOrder = styled(Box)`
+    padding: 12px 16px;
+    font-family: '${inter.style.fontFamily}', sans-serif;
+    font-size: 16px;
+    color: #5f6c72;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: #f4f4f4;
+    }
+
+     @media (max-width: 768px) {
+        font-size: 16px;
+    }
+`;
+
 export const OrganizeBox = styled(Box)`
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 40px;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        gap: 16px;
-        align-items: stretch;
-    }
 `;
 
 export const Title = styled(Typography)`
