@@ -47,8 +47,14 @@ export const SearchAutocomplete: React.FC<SearchAutocompleteProps> = ({
     try {
       const response = await fetch(`https://api.insany.co/api/products?q=${encodeURIComponent(searchQuery)}&limit=5`);
       const data = await response.json();
-      setSuggestions(data.products || []);
-      setShowSuggestions(true);
+      const products = data.products || [];
+      
+      const matchingProducts = products.filter((product: Product) => 
+        product.name.toLowerCase().startsWith(searchQuery.toLowerCase())
+      );
+      
+      setSuggestions(matchingProducts);
+      setShowSuggestions(matchingProducts.length > 0);
     } catch (error) {
       console.error('Erro ao buscar produtos:', error);
       setSuggestions([]);
