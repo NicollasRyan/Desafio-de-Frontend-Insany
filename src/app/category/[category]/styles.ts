@@ -6,7 +6,6 @@ const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
 export const TextCategory = styled.span`
     font-weight: 400;
-    font-style: Regular;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0%;
@@ -30,7 +29,6 @@ export const Text = styled(Typography)`
     line-height: 22px;
     letter-spacing: 0%;
     vertical-align: middle;
-    font-style: Regular;
     color: #737380;
     text-decoration: none;
     margin-right: 5px;
@@ -47,14 +45,12 @@ export const Title = styled(Typography)`
 `;
 
 export const Summary = styled(Typography)`
-    font-family: Inter;
+    font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 400;
-    font-style: Regular;
     font-size: 20px;
     line-height: 150%;
     letter-spacing: 0%;
     vertical-align: middle;
-
 `;
 
 export const DropdownContainer = styled(Box)`
@@ -74,7 +70,6 @@ export const DropdownButton = styled(Box)`
     .text {
         font-family: '${inter.style.fontFamily}', sans-serif;
         font-weight: 400;
-        font-style: Regular;
         font-size: 14px;
         margin-right: 8px;
     }
@@ -95,7 +90,6 @@ export const DropdownList = styled(Box)`
         line-height: 22px;
         letter-spacing: 0%;
         font-weight: 400;
-        font-style: Regular;
         font-size: 14px;
         vertical-align: middle;
     }

@@ -21,7 +21,7 @@ export const DropdownButton = styled(Box)`
     .text {
         font-family: '${inter.style.fontFamily}', sans-serif;
         font-weight: 400;
-        font-style: Regular;
+         
         font-size: 14px;
         margin-right: 8px;
     }
@@ -42,7 +42,7 @@ export const DropdownList = styled(Box)`
         line-height: 22px;
         letter-spacing: 0%;
         font-weight: 400;
-        font-style: Regular;
+         
         font-size: 14px;
         vertical-align: middle;
     }
@@ -97,8 +97,13 @@ export const CardCategores = styled(Box)`
     padding-bottom: 32px;
     padding-left: 40px;
     gap: 16px;
+    cursor: pointer;
     border: 1px solid #E6E6E6;
     background-color: #FFF;
+
+    &:hover {
+        background-color: #F4F4F4;
+    }
 
     .title {
         font-family: '${inter.style.fontFamily}', sans-serif;

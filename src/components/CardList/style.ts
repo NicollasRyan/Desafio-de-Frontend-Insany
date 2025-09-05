@@ -49,7 +49,6 @@ export const Content = styled(Box)`
 export const Text = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 400;
-    font-style: Regular;
     font-size: 14px;
     line-height: 150%;
     letter-spacing: 0%;

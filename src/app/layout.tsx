@@ -1,6 +1,7 @@
 import GlobalStyles from "../components/GlobalStyle";
 import { Metadata } from "next";
 import { Header } from "../components/Header";
+import { CartProvider } from "../contexts/CartContext";
 
 export const metadata: Metadata = {
   title: "InsanyShop",
@@ -16,8 +17,10 @@ export default function RootLayout({
     <html lang="en">
       <GlobalStyles />
       <body>
-        <Header />
-        {children}
+        <CartProvider>
+          <Header />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

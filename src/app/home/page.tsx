@@ -139,7 +139,7 @@ export default function Home() {
           <Typography>Carregando produtos...</Typography>
         ) : (
           sortedProducts?.map((product, index) => (
-            <Grid size={4} key={index}>
+            <Grid size={{ md: 4, xs: 12, sm: 4 }} key={index}>
               <CardList
                 id={product.id}
                 name={product.name}
@@ -168,7 +168,7 @@ export default function Home() {
       <GridCategores container spacing={2}>
         {categores.map((category, index) => (
           <Grid key={index}>
-            <CardCategores>
+            <CardCategores onClick={() => router.push(`/category/${category}`)}>
               <Typography className="title">{category}</Typography>
               <Typography className="text">{category.length} produtos</Typography>
             </CardCategores>

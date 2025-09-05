@@ -1,9 +1,14 @@
 "use client"
 
-import { Box, Container, IconButton, InputAdornment, TextField, Typography } from "@mui/material"
+import { Box, Container, IconButton, InputAdornment, Typography, Badge } from "@mui/material"
 import { BoxHeader, ContentHeader, InputSearch } from "./styles"
+import { useRouter } from "next/navigation"
+import { useCart } from "@/contexts/CartContext"
 
 export const Header = () => {
+    const router = useRouter();
+    const { getTotalItems } = useCart();
+
     return (
         <ContentHeader>
             <Container>
@@ -12,7 +17,12 @@ export const Header = () => {
                         InsanyShop
                     </Typography>
 
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Box sx={{ 
+                        display: 'flex', 
+                        alignItems: 'center',
+                        gap: { xs: '8px', md: '16px' },
+                        width: { xs: '100%', md: 'auto' }
+                    }}>
                         <InputSearch
                             size="small"
                             fullWidth
@@ -26,9 +36,43 @@ export const Header = () => {
                                     ),
                                 },
                             }}
+                            sx={{
+                                width: { xs: '100%', md: '352px' }
+                            }}
                         />
-                        <IconButton>
-                            <img src="/icons/shopping-bag.svg" alt="Meu ícone" />
+                        <IconButton 
+                            onClick={() => router.push('/cart')}
+                            sx={{ 
+                                marginLeft: { xs: '0', md: '16px' },
+                                minWidth: 'auto'
+                            }}
+                        >
+                            <Badge 
+                                badgeContent={getTotalItems()} 
+                                color="error"
+                                sx={{
+                                    '& .MuiBadge-badge': {
+                                        backgroundColor: '#DE3838',
+                                        color: '#FFF',
+                                        fontSize: '12px',
+                                        fontWeight: 500,
+                                        minWidth: '18px',
+                                        height: '18px',
+                                        borderRadius: '50%',
+                                        top: '19px',
+                                        right: '-1px',
+                                        '@media (max-width: 768px)': {
+                                            top: '12px',
+                                            right: '2px',
+                                            minWidth: '16px',
+                                            height: '16px',
+                                            fontSize: '10px',
+                                        }
+                                    }
+                                }}
+                            >
+                                <img src="/icons/shopping-bag.svg" alt="Carrinho" />
+                            </Badge>
                         </IconButton>
                     </Box>
                 </BoxHeader>
