@@ -3,11 +3,13 @@
 import { Box, Container, Grid } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useCart } from "@/contexts/CartContext";
 import { BoxNavigation, ButtonAdd, ContentDetail, ContentQuite, Image, TextBack, TextDetail, TextPrice, TextSubTitle, TitleDetail, TopContent } from "./styles";
 
 export default function Product() {
     const { id } = useParams<{ id: string }>();
     const router = useRouter();
+    const { addToCart } = useCart();
 
     const [product, setProduct] = useState<any>({});
     const [loading, setLoading] = useState(true);
@@ -27,6 +29,19 @@ export default function Product() {
 
         if (id) fetchProduct();
     }, [id]);
+
+    const handleAddToCart = () => {
+        if (product) {
+            addToCart({
+                id: product.id.toString(),
+                name: product.name,
+                price: product.price,
+                image: product.image,
+                description: product.description,
+                stock: product.stock
+            });
+        }
+    };
 
     return (
         <Container>
@@ -55,9 +70,14 @@ export default function Product() {
                                     <TextSubTitle className="textSubTitle">Descrição</TextSubTitle>
                                     <TextDetail>{product.description}</TextDetail>
                                 </ContentQuite>
-                                <ButtonAdd fullWidth variant="contained">
+                                <ButtonAdd 
+                                    fullWidth 
+                                    variant="contained"
+                                    onClick={handleAddToCart}
+                                    disabled={product.stock === 0}
+                                >
                                     <img src="/icons/cart.svg" alt="carrinho" />
-                                    Adicionar
+                                    {product.stock === 0 ? 'Sem estoque' : 'Adicionar'}
                                 </ButtonAdd>
                             </ContentDetail>
                         </Grid>

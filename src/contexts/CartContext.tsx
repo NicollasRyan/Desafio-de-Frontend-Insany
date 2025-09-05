@@ -1,6 +1,7 @@
 "use client";
 
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { Snackbar, Alert } from '@mui/material';
 
 export interface CartItem {
     id: string;
@@ -38,6 +39,8 @@ interface CartProviderProps {
 
 export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     const [cartItems, setCartItems] = useState<CartItem[]>([]);
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
 
     useEffect(() => {
         const savedCart = localStorage.getItem('cart');
@@ -60,12 +63,20 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
             
             if (existingItem) {
                 const newQuantity = Math.min(existingItem.quantity + 1, item.stock);
-                return prevItems.map(cartItem =>
+                const updatedItems = prevItems.map(cartItem =>
                     cartItem.id === item.id
                         ? { ...cartItem, quantity: newQuantity, stock: item.stock }
                         : cartItem
                 );
+                
+                setSnackbarMessage(`Quantidade de "${item.name}" atualizada para ${newQuantity}`);
+                setSnackbarOpen(true);
+                
+                return updatedItems;
             } else {
+                setSnackbarMessage(`"${item.name}" adicionado ao carrinho!`);
+                setSnackbarOpen(true);
+                
                 return [...prevItems, { ...item, quantity: 1 }];
             }
         });
@@ -104,6 +115,13 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
         return cartItems.reduce((total, item) => total + item.quantity, 0);
     };
 
+    const handleCloseSnackbar = (event?: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+        setSnackbarOpen(false);
+    };
+
     const value: CartContextType = {
         cartItems,
         addToCart,
@@ -117,6 +135,21 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
     return (
         <CartContext.Provider value={value}>
             {children}
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={3000}
+                onClose={handleCloseSnackbar}
+                anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+            >
+                <Alert 
+                    onClose={handleCloseSnackbar} 
+                    severity="success" 
+                    variant="filled"
+                    sx={{ width: '100%' }}
+                >
+                    {snackbarMessage}
+                </Alert>
+            </Snackbar>
         </CartContext.Provider>
     );
 };
