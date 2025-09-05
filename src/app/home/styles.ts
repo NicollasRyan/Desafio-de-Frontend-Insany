@@ -56,6 +56,30 @@ export const DropdownList = styled(Box)`
     }
 `;
 
+export const DropdownListOrder = styled(Box)`
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    width: 176px;
+    background-color: #fff;
+    border-radius: 4px;
+    overflow: hidden;
+    z-index: 100;
+
+    .text {
+        font-family: '${inter.style.fontFamily}', sans-serif;
+        line-height: 22px;
+        letter-spacing: 0%;
+        font-weight: 400;
+        font-size: 14px;
+        vertical-align: middle;
+    }
+
+    @media (max-width: 768px) {
+        left: -55px;
+    }
+`;
+
 export const DropdownItem = styled(Box)`
     padding: 12px 16px;
     font-family: '${inter.style.fontFamily}', sans-serif;
@@ -66,23 +90,6 @@ export const DropdownItem = styled(Box)`
 
     &:hover {
         background-color: #f4f4f4;
-    }
-`;
-
-export const DropdownItemOrder = styled(Box)`
-    padding: 12px 16px;
-    font-family: '${inter.style.fontFamily}', sans-serif;
-    font-size: 16px;
-    color: #5f6c72;
-    cursor: pointer;
-    transition: background-color 0.2s;
-
-    &:hover {
-        background-color: #f4f4f4;
-    }
-
-     @media (max-width: 768px) {
-        font-size: 16px;
     }
 `;
 

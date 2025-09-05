@@ -1,7 +1,7 @@
 "use client";
 
 import { Box, Container, Grid, Pagination, Typography } from "@mui/material";
-import { CardCategores, DropdownButton, DropdownContainer, DropdownItem, DropdownItemOrder, DropdownList, GridCategores, OrganizeBox, PaginationStyled, Title, TitleCategores } from "./styles";
+import { CardCategores, DropdownButton, DropdownContainer, DropdownItem, DropdownList, DropdownListOrder, GridCategores, OrganizeBox, PaginationStyled, Title, TitleCategores } from "./styles";
 import { useEffect, useState } from "react";
 import { CardList } from "../../components/CardList";
 import { useRouter } from "next/navigation";
@@ -117,20 +117,20 @@ export default function Home() {
           </DropdownButton>
 
           {openOrder && (
-            <DropdownList>
-              <DropdownItemOrder onClick={() => setSortOrder("new")}>
+            <DropdownListOrder>
+              <DropdownItem onClick={() => setSortOrder("new")}>
                 <Typography className="text">Novidade</Typography>
-              </DropdownItemOrder>
-              <DropdownItemOrder onClick={() => setSortOrder("price-desc")}>
+              </DropdownItem>
+              <DropdownItem onClick={() => setSortOrder("price-desc")}>
                 <Typography className="text">Preço: Maior-menor</Typography>
-              </DropdownItemOrder>
-              <DropdownItemOrder onClick={() => setSortOrder("price-asc")}>
+              </DropdownItem>
+              <DropdownItem onClick={() => setSortOrder("price-asc")}>
                 <Typography className="text">Preço: Menor-maior</Typography>
-              </DropdownItemOrder>
-              <DropdownItemOrder onClick={() => setSortOrder("bestseller")}>
+              </DropdownItem>
+              <DropdownItem onClick={() => setSortOrder("bestseller")}>
                 <Typography className="text">Mais Vendidos</Typography>
-              </DropdownItemOrder>
-            </DropdownList>
+              </DropdownItem>
+            </DropdownListOrder>
           )}
         </DropdownContainer>
       </OrganizeBox>
