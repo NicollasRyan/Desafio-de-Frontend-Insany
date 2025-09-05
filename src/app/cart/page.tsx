@@ -24,9 +24,7 @@ export default function Cart() {
                     </TextCart>
 
                     {cartItems.length === 0 ? (
-                        <Box sx={{ textAlign: "center", padding: "40px" }}>
-                            <TextCart>Seu carrinho está vazio</TextCart>
-                        </Box>
+                        <TextCart>Seu carrinho está vazio</TextCart>
                     ) : (
                         cartItems.map((item) => (
                             <CardCart key={item.id} item={item} />

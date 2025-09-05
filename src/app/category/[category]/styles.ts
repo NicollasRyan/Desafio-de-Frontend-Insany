@@ -37,11 +37,17 @@ export const Text = styled(Typography)`
 export const Title = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 700;
-    font-style: Bold;
     font-size: 40px;
     line-height: 150%;
     letter-spacing: 0%;
     vertical-align: middle;
+`;
+
+export const  BoxSpaceBetween = styled(Box)`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0;
 `;
 
 export const Summary = styled(Typography)`
@@ -116,9 +122,13 @@ export const OrganizeBox = styled(Box)`
     margin-top: 40px;
 `;
 
-export const PaginationStyled = styled(Pagination)`
+export const BoxPagination = styled(Box)`
+    display: flex;
+    justify-content: center;
     margin: 45px 0 70px;
+`;
 
+export const PaginationStyled = styled(Pagination)`
   & .MuiPagination-ul {
     gap: 8px;
   }

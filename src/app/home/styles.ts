@@ -72,7 +72,6 @@ export const OrganizeBox = styled(Box)`
 export const Title = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 700;
-    font-style: Bold;
     font-size: 40px;
     line-height: 150%;
     letter-spacing: 0%;
@@ -173,7 +172,6 @@ export const PaginationStyled = styled(Pagination)`
 export const TitleCategores = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 700;
-    font-style: Bold;
     font-size: 40px;
     line-height: 150%;
     letter-spacing: 0%;

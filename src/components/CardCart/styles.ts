@@ -28,9 +28,7 @@ export const BoxCartContent = styled(Box)`
 export const TitleCart = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 300;
-    font-style: Light;
     font-size: 20px;
-    leading-trim: NONE;
     line-height: 150%;
     letter-spacing: 0%;
     vertical-align: middle;
@@ -62,10 +60,8 @@ export const BoxMargin = styled(Box)`
 
 export const Text = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
-    font-family: Inter;
     font-weight: 400;
     font-size: 12px;
-    leading-trim: NONE;
     line-height: 150%;
     letter-spacing: 0%;
     vertical-align: middle;
@@ -76,7 +72,6 @@ export const TextPrice = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 600;
     font-size: 16px;
-    leading-trim: NONE;
     line-height: 150%;
     letter-spacing: 0%;
     text-align: right;

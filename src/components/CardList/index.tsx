@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import { BoxCard, BoxSpaceBetween, ButtonAdd, Content, Image, Price, Text, TitleCard } from "./style";
+import { BoxCard, BoxSpaceBetween, ButtonAdd, Content, Image, Price, Text, TextLimit, TitleCard } from "./style";
 import { useRouter } from "next/navigation";
 import { useCart } from "@/contexts/CartContext";
 
@@ -69,7 +69,7 @@ export const CardList: React.FC<CardListProps> = ({
 
                 <Box>
                     <TitleCard>{name}</TitleCard>
-                    <Text sx={{ fontWeight: 400, fontSize: "14px", color: "#555555", height: "60px", overflow: "hidden", textOverflow: "ellipsis" }}>{limtText(description)}</Text>
+                    <TextLimit>{limtText(description)}</TextLimit>
                 </Box>
 
                 <BoxSpaceBetween>

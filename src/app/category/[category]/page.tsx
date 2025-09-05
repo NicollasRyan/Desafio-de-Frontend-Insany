@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { TypePagination, TypeProduct } from "../../home/page";
 import { useParams, useRouter } from "next/navigation";
 import { CardList } from "../../../components/CardList";
-import { OrganizeBox, DropdownContainer, DropdownButton, DropdownList, DropdownItem, TextCategory, BoxNavigation, Text, Title, Summary, PaginationStyled } from "./styles";
+import { OrganizeBox, DropdownContainer, DropdownButton, DropdownList, DropdownItem, TextCategory, BoxNavigation, Text, Title, Summary, PaginationStyled, BoxSpaceBetween, BoxPagination } from "./styles";
 
 export default function Category() {
     const [products, setProducts] = useState<TypeProduct[]>([]);
@@ -103,12 +103,12 @@ export default function Category() {
                 </DropdownContainer>
             </OrganizeBox>
 
-            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", m: "50px 0" }}>
+            <BoxSpaceBetween>
                 <Title>{name}</Title>
                 <Summary>{resproductsSummary(name)}</Summary>
-            </Box>
+            </BoxSpaceBetween>
 
-            <Grid container spacing={2} style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
+            <Grid container spacing={3}>
                 {sortedProducts.map((p, index) => (
                     <Grid size={4} key={index}>
                         <CardList
@@ -125,14 +125,14 @@ export default function Category() {
                 ))}
             </Grid>
             {pagination && (
-                <Box display="flex" justifyContent="center">
+                <BoxPagination>
                     <PaginationStyled
                         count={pagination.totalPages}
                         page={page}
                         onChange={handlePageChange}
                         size="large"
                     />
-                </Box>
+                </BoxPagination>
             )}
         </Container>
     )

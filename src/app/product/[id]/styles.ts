@@ -15,7 +15,6 @@ export const BoxNavigation = styled(Box)`
 export const TextBack = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 500;
-    font-style: Medium;
     font-size: 14px;
     line-height: 150%;
     letter-spacing: 0%;
@@ -36,6 +35,13 @@ export const Image = styled.img`
     display: block;
     position: relative;
     overflow: hidden;
+`;
+
+export const ContentDetail = styled(Box)`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
 `;
 
 export const TopContent = styled(Box)`
@@ -64,7 +70,6 @@ export const TextSubTitle = styled(Typography)`
 export const TitleDetail = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 300;
-    font-style: Light;
     font-size: 32px;
     line-height: 150%;
     letter-spacing: 0%;

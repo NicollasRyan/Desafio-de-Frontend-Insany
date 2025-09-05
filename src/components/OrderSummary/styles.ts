@@ -92,3 +92,19 @@ export const HelpLink = styled(Typography)`
         color: #41414D;
     }
 `;
+
+export const SummaryBox = styled(Box)`
+    margin-bottom: 24px;
+`;
+
+export const DividerBox = styled(Box)`
+    border-top: 1px solid #E6E6E6;
+    margin-top: 16px;
+    padding-top: 16px;
+`;
+
+export const HelpLinksContainer = styled(Box)`
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+`;

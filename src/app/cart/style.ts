@@ -37,6 +37,8 @@ export const Title = styled(Typography)`
 
 export const TextCart = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
+    text-align: center;
+    padding: 20px;
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;

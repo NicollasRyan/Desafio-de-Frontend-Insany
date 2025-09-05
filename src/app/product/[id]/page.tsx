@@ -3,7 +3,7 @@
 import { Box, Container, Grid } from "@mui/material";
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { BoxNavigation, ButtonAdd, ContentQuite, Image, TextBack, TextDetail, TextPrice, TextSubTitle, TitleDetail, TopContent } from "./styles";
+import { BoxNavigation, ButtonAdd, ContentDetail, ContentQuite, Image, TextBack, TextDetail, TextPrice, TextSubTitle, TitleDetail, TopContent } from "./styles";
 
 export default function Product() {
     const { id } = useParams<{ id: string }>();
@@ -45,7 +45,7 @@ export default function Product() {
 
                         </Grid>
                         <Grid size={{ xs: 12, sm: 6, md: 6 }}>
-                            <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', height: '100%' }}>
+                            <ContentDetail>
                                 <TopContent>
                                     <TextSubTitle className="textSubTitle">{product.category}</TextSubTitle>
                                     <TitleDetail>{product.name}</TitleDetail>
@@ -59,7 +59,7 @@ export default function Product() {
                                     <img src="/icons/cart.svg" alt="carrinho" />
                                     Adicionar
                                 </ButtonAdd>
-                            </Box>
+                            </ContentDetail>
                         </Grid>
                     </>
                 ) : (

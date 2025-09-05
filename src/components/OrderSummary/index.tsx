@@ -8,7 +8,10 @@ import {
     TotalItem, 
     CheckoutButton,
     HelpSection,
-    HelpLink
+    HelpLink,
+    SummaryBox,
+    DividerBox,
+    HelpLinksContainer
 } from "./styles";
 import { useCart } from "@/contexts/CartContext";
 
@@ -24,7 +27,7 @@ export const OrderSummary = () => {
             <Box>
                 <Title>RESUMO DO PEDIDO</Title>
                 
-                <Box sx={{ marginBottom: "24px" }}>
+                <SummaryBox>
                     <SummaryItem>
                         <Typography>Subtotal de produtos</Typography>
                         <Typography>R$ {subtotal.toFixed(2).replace('.', ',')}</Typography>
@@ -37,17 +40,13 @@ export const OrderSummary = () => {
                         </Typography>
                     </SummaryItem>
                     
-                    <Box sx={{ 
-                        borderTop: "1px solid #E6E6E6", 
-                        marginTop: "16px", 
-                        paddingTop: "16px" 
-                    }}>
+                    <DividerBox>
                         <TotalItem>
                             <Typography>Total</Typography>
                             <Typography>R$ {total.toFixed(2).replace('.', ',')}</Typography>
                         </TotalItem>
-                    </Box>
-                </Box>
+                    </DividerBox>
+                </SummaryBox>
                 
                 <CheckoutButton 
                     variant="contained" 
@@ -59,12 +58,12 @@ export const OrderSummary = () => {
             </Box>
             
             <HelpSection>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                <HelpLinksContainer>
                     <HelpLink>AJUDA</HelpLink>
                     <HelpLink>REEMBOLSOS</HelpLink>
                     <HelpLink>ENTREGAS E FRETE</HelpLink>
                     <HelpLink>TROCAS E DEVOLUÇÕES</HelpLink>
-                </Box>
+                </HelpLinksContainer>
             </HelpSection>
         </OrderSummaryContainer>
     );
