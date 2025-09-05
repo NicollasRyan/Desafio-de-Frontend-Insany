@@ -3,10 +3,11 @@
 import { Box, Container, Grid, Pagination, Typography } from "@mui/material";
 import { CardCategores, DropdownButton, DropdownContainer, DropdownItem, DropdownList, GridCategores, OrganizeBox, PaginationStyled, Title, TitleCategores } from "./styles";
 import { useEffect, useState } from "react";
-import { CardList } from "../components/CardList";
+import { CardList } from "../../components/CardList";
 import { useRouter } from "next/navigation";
+import { Loading } from "@/components/Loading";
 
-export interface Pagination {
+export interface TypePagination {
   currentPage: number;
   totalPages: number;
   totalProducts: number;
@@ -14,10 +15,9 @@ export interface Pagination {
   hasPreviousPage: boolean;
 }
 
-export interface Product {
+export interface TypeProduct {
   id: number;
   name: string;
-  brand: string;
   price: number;
   description: string;
   category: string;
@@ -27,14 +27,14 @@ export interface Product {
 }
 
 export interface ProductsResponse {
-  pagination: Pagination;
-  products: Product[];
+  pagination: TypePagination;
+  products: TypeProduct[];
 }
 
 
 export default function Home() {
-  const [products, setProducts] = useState<Product[]>([]);
-  const [pagination, setPagination] = useState<Pagination | null>(null);
+  const [products, setProducts] = useState<TypeProduct[]>([]);
+  const [pagination, setPagination] = useState<TypePagination | null>(null);
   const [loading, setLoading] = useState(true);
   const [openCategores, setOpenCategores] = useState(false);
   const [openOrder, setOpenOrder] = useState(false);
@@ -135,15 +135,15 @@ export default function Home() {
         </DropdownContainer>
       </OrganizeBox>
       <Title>Todos os produtos</Title>
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         {loading ? (
-          <Typography>Carregando produtos...</Typography>
+          <Loading />
         ) : (
           sortedProducts?.map((product, index) => (
-            <Grid size={4} key={index}>
+            <Grid size={{ md: 4, xs: 12, sm: 4 }} key={index}>
               <CardList
+                id={product.id}
                 name={product.name}
-                brand={product.brand}
                 category={product.category}
                 description={product.description}
                 image={product.image}
@@ -169,7 +169,7 @@ export default function Home() {
       <GridCategores container spacing={2}>
         {categores.map((category, index) => (
           <Grid key={index}>
-            <CardCategores>
+            <CardCategores onClick={() => router.push(`/category/${category}`)}>
               <Typography className="title">{category}</Typography>
               <Typography className="text">{category.length} produtos</Typography>
             </CardCategores>

@@ -2,15 +2,16 @@
 
 import { Box, Container, Grid, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Pagination, Product } from "../../home/page";
+import { TypePagination, TypeProduct } from "../../home/page";
 import { useParams, useRouter } from "next/navigation";
-import { CardList } from "../../components/CardList";
-import { OrganizeBox, DropdownContainer, DropdownButton, DropdownList, DropdownItem, TextCategory, BoxNavigation, Text, Title, Summary, PaginationStyled } from "./styles";
+import { CardList } from "../../../components/CardList";
+import { OrganizeBox, DropdownContainer, DropdownButton, DropdownList, DropdownItem, TextCategory, BoxNavigation, Text, Title, Summary, PaginationStyled, BoxSpaceBetween, BoxPagination } from "./styles";
+import { Loading } from "@/components/Loading";
 
 export default function Category() {
-    const [products, setProducts] = useState<Product[]>([]);
+    const [products, setProducts] = useState<TypeProduct[]>([]);
     const [loading, setLoading] = useState(true);
-    const [pagination, setPagination] = useState<Pagination | null>(null);
+    const [pagination, setPagination] = useState<TypePagination | null>(null);
     const [sortOrder, setSortOrder] = useState<string>("");
     const [openOrder, setOpenOrder] = useState(false);
     const [page, setPage] = useState(1);
@@ -64,10 +65,8 @@ export default function Category() {
     };
 
     const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
-  };
-
-    console.log(products);
+        setPage(value);
+    };
 
     return (
         <Container>
@@ -103,36 +102,40 @@ export default function Category() {
                 </DropdownContainer>
             </OrganizeBox>
 
-            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", m: "50px 0" }}>
+            <BoxSpaceBetween>
                 <Title>{name}</Title>
                 <Summary>{resproductsSummary(name)}</Summary>
-            </Box>
+            </BoxSpaceBetween>
 
-            <Grid container spacing={2} style={{ display: "flex", flexWrap: "wrap", gap: "16px" }}>
-                {sortedProducts.map((p, index) => (
-                    <Grid size={4} key={index}>
-                        <CardList
-                            name={p.name}
-                            brand={p.brand}
-                            category={p.category}
-                            description={p.description}
-                            image={p.image}
-                            price={p.price}
-                            rating={p.rating}
-                            stock={p.stock}
-                        />
-                    </Grid>
-                ))}
+            <Grid container spacing={3}>
+                {loading ? (
+                    <Loading />
+                ) : (
+                    sortedProducts?.map((product, index) => (
+                        <Grid size={{ md: 4, xs: 12, sm: 4 }} key={index}>
+                            <CardList
+                                id={product.id}
+                                name={product.name}
+                                category={product.category}
+                                description={product.description}
+                                image={product.image}
+                                price={product.price}
+                                rating={product.rating}
+                                stock={product.stock}
+                            />
+                        </Grid>
+                    ))
+                )}
             </Grid>
             {pagination && (
-                <Box display="flex" justifyContent="center">
+                <BoxPagination>
                     <PaginationStyled
                         count={pagination.totalPages}
                         page={page}
                         onChange={handlePageChange}
                         size="large"
                     />
-                </Box>
+                </BoxPagination>
             )}
         </Container>
     )

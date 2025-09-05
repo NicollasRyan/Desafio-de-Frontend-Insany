@@ -1,13 +1,11 @@
 import styled from "@emotion/styled";
 import { Box, Pagination, Typography } from "@mui/material";
 import { Inter } from 'next/font/google';
-import Link from "next/link";
 
 const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '700'] });
 
 export const TextCategory = styled.span`
     font-weight: 400;
-    font-style: Regular;
     font-size: 14px;
     line-height: 22px;
     letter-spacing: 0%;
@@ -23,7 +21,7 @@ export const BoxNavigation = styled(Box)`
 `;
 
 export const Text = styled(Typography)`
-    font-family: '${inter.style.fontFamily}', sans-serif !important;
+    font-family: '${inter.style.fontFamily}', sans-serif;
     display: flex;
     align-items: center;
     font-weight: 400;
@@ -31,7 +29,6 @@ export const Text = styled(Typography)`
     line-height: 22px;
     letter-spacing: 0%;
     vertical-align: middle;
-    font-style: Regular;
     color: #737380;
     text-decoration: none;
     margin-right: 5px;
@@ -40,22 +37,26 @@ export const Text = styled(Typography)`
 export const Title = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 700;
-    font-style: Bold;
     font-size: 40px;
     line-height: 150%;
     letter-spacing: 0%;
     vertical-align: middle;
 `;
 
+export const  BoxSpaceBetween = styled(Box)`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 50px 0;
+`;
+
 export const Summary = styled(Typography)`
-    font-family: Inter;
+    font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 400;
-    font-style: Regular;
     font-size: 20px;
     line-height: 150%;
     letter-spacing: 0%;
     vertical-align: middle;
-
 `;
 
 export const DropdownContainer = styled(Box)`
@@ -75,7 +76,6 @@ export const DropdownButton = styled(Box)`
     .text {
         font-family: '${inter.style.fontFamily}', sans-serif;
         font-weight: 400;
-        font-style: Regular;
         font-size: 14px;
         margin-right: 8px;
     }
@@ -96,7 +96,6 @@ export const DropdownList = styled(Box)`
         line-height: 22px;
         letter-spacing: 0%;
         font-weight: 400;
-        font-style: Regular;
         font-size: 14px;
         vertical-align: middle;
     }
@@ -123,9 +122,13 @@ export const OrganizeBox = styled(Box)`
     margin-top: 40px;
 `;
 
-export const PaginationStyled = styled(Pagination)`
+export const BoxPagination = styled(Box)`
+    display: flex;
+    justify-content: center;
     margin: 45px 0 70px;
+`;
 
+export const PaginationStyled = styled(Pagination)`
   & .MuiPagination-ul {
     gap: 8px;
   }

@@ -15,6 +15,7 @@ export const BoxCard = styled(Box)`
     justify-content: space-between;
     opacity: 1;
     border-width: 1px;
+    cursor: pointer;
 `;
 
 export const Image = styled.img`
@@ -48,17 +49,27 @@ export const Content = styled(Box)`
 export const Text = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 400;
-    font-style: Regular;
     font-size: 14px;
     line-height: 150%;
     letter-spacing: 0%;
     vertical-align: middle;
 `;
 
+export const TextLimit = styled(Typography)`
+    font-family: '${inter.style.fontFamily}', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    height: 60px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+`;
+
 export const TitleCard = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     font-weight: 700;
-    font-style: Bold;
     font-size: 14px;
     line-height: 150%;
     letter-spacing: 0%;
@@ -70,7 +81,6 @@ export const Price = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;
     color: #1B9847;
     font-weight: 700;
-    font-style: bold;
     font-size: 24px;
     line-height: 150%;
     letter-spacing: 0%;
