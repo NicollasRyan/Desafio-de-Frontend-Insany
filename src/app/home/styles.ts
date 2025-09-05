@@ -36,6 +36,7 @@ export const DropdownList = styled(Box)`
     border-radius: 4px;
     overflow: hidden;
     z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
     .text {
         font-family: '${inter.style.fontFamily}', sans-serif;
@@ -45,6 +46,13 @@ export const DropdownList = styled(Box)`
          
         font-size: 14px;
         vertical-align: middle;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+        min-width: 200px;
+        left: 50%;
+        transform: translateX(-50%);
     }
 `;
 
@@ -65,8 +73,13 @@ export const OrganizeBox = styled(Box)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-
     margin-top: 40px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
 `;
 
 export const Title = styled(Typography)`
@@ -78,6 +91,10 @@ export const Title = styled(Typography)`
     vertical-align: middle;
 
     margin: 50px 0 50px;
+
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
 `;
 
 export const CardCategores = styled(Box)`
@@ -167,6 +184,19 @@ export const PaginationStyled = styled(Pagination)`
     border: 1px solid #A212DF;
     font-weight: 600;
   }
+
+  @media (max-width: 768px) {
+    & .MuiPagination-ul {
+      gap: 4px;
+    }
+
+    & .MuiPaginationItem-root {
+      padding: 6px;
+      font-size: 14px;
+      min-width: 28px;
+      height: 28px;
+    }
+  }
 `;
 
 export const TitleCategores = styled(Typography)`
@@ -177,8 +207,20 @@ export const TitleCategores = styled(Typography)`
     letter-spacing: 0%;
     vertical-align: middle;
     margin: 25px 0 50px;
+
+    @media (max-width: 768px) {
+        font-size: 28px;
+    }
 `;
 
 export const GridCategores = styled(Grid)`
     margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        gap: 16px;
+    }
 `;

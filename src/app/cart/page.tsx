@@ -14,7 +14,7 @@ export default function Cart() {
     return (
         <Container>
             <Grid container spacing={4} marginBottom="60px">
-                <Grid size={8}>
+                <Grid size={{md: 8, xs: 12}}>
                     <BoxNavigation onClick={() => router.push('/')}>
                         <img src="/icons/arrow-back.svg" alt="" /> <TextBack>Voltar</TextBack>
                     </BoxNavigation>
@@ -31,7 +31,7 @@ export default function Cart() {
                         ))
                     )}
                 </Grid>
-                <Grid size={4}>
+                <Grid size={{md: 4, xs: 12}}>
                     <OrderSummary />
                 </Grid>
             </Grid>

@@ -7,7 +7,6 @@ import {
     SummaryItem, 
     TotalItem, 
     CheckoutButton,
-    HelpSection,
     HelpLink,
     SummaryBox,
     DividerBox,
@@ -57,14 +56,14 @@ export const OrderSummary = () => {
                 </CheckoutButton>
             </Box>
             
-            <HelpSection>
+            <Box>
                 <HelpLinksContainer>
                     <HelpLink>AJUDA</HelpLink>
                     <HelpLink>REEMBOLSOS</HelpLink>
                     <HelpLink>ENTREGAS E FRETE</HelpLink>
                     <HelpLink>TROCAS E DEVOLUÇÕES</HelpLink>
                 </HelpLinksContainer>
-            </HelpSection>
+            </Box>
         </OrderSummaryContainer>
     );
 };

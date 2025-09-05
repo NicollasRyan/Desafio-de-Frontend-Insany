@@ -14,8 +14,6 @@ export const BoxHeader = styled(Box)`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
 
     p {
         font-family: '${inter.style.fontFamily}', sans-serif;
@@ -34,15 +32,57 @@ export const BoxHeader = styled(Box)`
     button {
         margin-left: 16px;
     }
+
+    @media (max-width: 768px) {
+        align-items: flex-start;
+        gap: 16px;
+    }
 `;
 
 export const BoxSearch = styled(Box)`
     display: flex;
     align-items: center;
-    gap: 16px;
 
     @media (max-width: 768px) {
-        gap: 8px;
+        width: auto;
+    }
+`;
+
+export const SearchContainerDesktop = styled(Box)`
+    position: relative;
+    width: 352px;
+
+    img {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        width: 20px;
+        height: 20px;
+    }
+    
+    @media (max-width: 768px) {
+        display: none;
+    }
+`;
+
+export const SearchContainerMobile = styled(Box)`
+    position: relative;
+    width: 100%;
+
+    img {
+        position: absolute;
+        right: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        width: 20px;
+        height: 20px;
+    }
+    
+    @media (min-width: 769px) {
+        display: none;
     }
 `;
 
@@ -98,7 +138,7 @@ export const SearchContainer = styled(Box)`
     
     @media (max-width: 768px) {
         width: 100%;
-        max-width: 280px;
+        max-width: 100%;
     }
 `;
 

@@ -13,6 +13,12 @@ export const BoxCart = styled(Box)`
     margin-top: 20px;
     background-color: #FFF;
     min-height: 211px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+        min-height: auto;
+        gap: 0;
+    }
 `;
 
 export const BoxCartContent = styled(Box)`
@@ -23,6 +29,11 @@ export const BoxCartContent = styled(Box)`
     justify-content: space-between;
     height: 100%;
     gap: 20px;
+
+    @media (max-width: 768px) {
+        padding: 16px;
+        gap: 16px;
+    }
 `;
 
 export const TitleCart = styled(Typography)`
@@ -33,6 +44,10 @@ export const TitleCart = styled(Typography)`
     letter-spacing: 0%;
     vertical-align: middle;
     color: #41414D;
+
+    @media (max-width: 768px) {
+        font-size: 18px;
+    }
 `;
 
 export const Image = styled.img`
@@ -45,6 +60,12 @@ export const Image = styled.img`
     display: block;
     position: relative;
     overflow: hidden;
+
+    @media (max-width: 768px) {
+        max-width: 100%;
+        height: 200px;
+        border-radius: 19px 19px 0 0;
+    }
 `;
 
 export const BoxSpaceBetween = styled(Box)`
@@ -114,9 +135,23 @@ export const QuantitySelect = styled(Select)`
         color: #737380;
         right: 8px;
     }
+
+    @media (max-width: 768px) {
+        min-width: 70px;
+        height: 36px;
+        
+        & .MuiSelect-select {
+            padding: 6px 10px;
+            font-size: 13px;
+        }
+    }
 `;
 
 export const BottomSection = styled(Box)`
     margin-top: auto;
     padding-top: 16px;
+
+    @media (max-width: 768px) {
+        padding-top: 12px;
+    }
 `;

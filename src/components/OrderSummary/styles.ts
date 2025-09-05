@@ -15,6 +15,13 @@ export const OrderSummaryContainer = styled(Box)`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    
+    @media (max-width: 768px) {
+        justify-content: space-evenly;
+        max-height: 500px;
+        min-height: 500px;
+    }
 `;
 
 export const Title = styled(Typography)`
@@ -75,9 +82,6 @@ export const CheckoutButton = styled(Button)`
     }
 `;
 
-export const HelpSection = styled(Box)`
-    margin-top: auto;
-`;
 
 export const HelpLink = styled(Typography)`
     font-family: '${inter.style.fontFamily}', sans-serif;

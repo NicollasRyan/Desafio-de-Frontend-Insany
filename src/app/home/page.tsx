@@ -5,6 +5,7 @@ import { CardCategores, DropdownButton, DropdownContainer, DropdownItem, Dropdow
 import { useEffect, useState } from "react";
 import { CardList } from "../../components/CardList";
 import { useRouter } from "next/navigation";
+import { Loading } from "@/components/Loading";
 
 export interface TypePagination {
   currentPage: number;
@@ -136,7 +137,7 @@ export default function Home() {
       <Title>Todos os produtos</Title>
       <Grid container spacing={3}>
         {loading ? (
-          <Typography>Carregando produtos...</Typography>
+          <Loading />
         ) : (
           sortedProducts?.map((product, index) => (
             <Grid size={{ md: 4, xs: 12, sm: 4 }} key={index}>

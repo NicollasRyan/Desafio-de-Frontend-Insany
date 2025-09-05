@@ -96,6 +96,10 @@ export const TextDetail = styled(Typography)`
     vertical-align: middle;
     color: #41414D;
     margin-bottom: 120px;
+
+    @media (max-width: 768px) {
+        margin-bottom: 40px;
+    }
 `;
 
 export const ButtonAdd = styled(Button)`

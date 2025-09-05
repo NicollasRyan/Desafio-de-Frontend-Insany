@@ -6,6 +6,7 @@ import { TypePagination, TypeProduct } from "../../home/page";
 import { useParams, useRouter } from "next/navigation";
 import { CardList } from "../../../components/CardList";
 import { OrganizeBox, DropdownContainer, DropdownButton, DropdownList, DropdownItem, TextCategory, BoxNavigation, Text, Title, Summary, PaginationStyled, BoxSpaceBetween, BoxPagination } from "./styles";
+import { Loading } from "@/components/Loading";
 
 export default function Category() {
     const [products, setProducts] = useState<TypeProduct[]>([]);
@@ -64,10 +65,8 @@ export default function Category() {
     };
 
     const handlePageChange = (_event: React.ChangeEvent<unknown>, value: number) => {
-    setPage(value);
-  };
-
-    console.log(products);
+        setPage(value);
+    };
 
     return (
         <Container>
@@ -109,20 +108,24 @@ export default function Category() {
             </BoxSpaceBetween>
 
             <Grid container spacing={3}>
-                {sortedProducts.map((p, index) => (
-                    <Grid size={4} key={index}>
-                        <CardList
-                            name={p.name}
-                            id={p.id}
-                            category={p.category}
-                            description={p.description}
-                            image={p.image}
-                            price={p.price}
-                            rating={p.rating}
-                            stock={p.stock}
-                        />
-                    </Grid>
-                ))}
+                {loading ? (
+                    <Loading />
+                ) : (
+                    sortedProducts?.map((product, index) => (
+                        <Grid size={{ md: 4, xs: 12, sm: 4 }} key={index}>
+                            <CardList
+                                id={product.id}
+                                name={product.name}
+                                category={product.category}
+                                description={product.description}
+                                image={product.image}
+                                price={product.price}
+                                rating={product.rating}
+                                stock={product.stock}
+                            />
+                        </Grid>
+                    ))
+                )}
             </Grid>
             {pagination && (
                 <BoxPagination>
